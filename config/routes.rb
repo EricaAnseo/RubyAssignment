@@ -5,5 +5,10 @@ Rails.application.routes.draw do
 	get  '/contact', to: 'static_pages#contact'
 	get  '/toc', 	 to: 'static_pages#toc'
 	get  '/signup',  to: 'users#new'
+
 	resources :users
+
+	get  '/login',	 to: 'sessions#new'
+    post '/login', 	 to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
 end
