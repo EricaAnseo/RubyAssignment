@@ -1,5 +1,8 @@
 # BSc Hons in Multimedia App Dev Year 4: Project
 
+#Rails version: 5.0.0
+#Ruby version: 2.2.6 (i386-mingw32)
+
 # Created By
 Erica Chai 
 20063209
