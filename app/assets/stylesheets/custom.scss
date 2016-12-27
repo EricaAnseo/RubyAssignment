@@ -4,92 +4,121 @@
 /*Importing Google Fonts*/
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
 
-  /* SCSS variables */
-  $pri_colour: #927192;
-  $sec_colour: #ccc;
+/* SCSS variables */
+$pri_colour: #927192;
+$sec_colour: #ccc;
 
-  /* universal */
-  body {
-    padding-top: 60px;
-    font-family: 'Lato', sans-serif;
+
+/* universal */
+body {
+  padding-top: 60px;
+  font-family: 'Lato', sans-serif;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+img
+{
+  width: 100%;
+  height: 100%;
+}
+
+/* typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+a
+{
+  color: $pri_colour;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+}
+
+a:hover, a:focus
+{
+  opacity:0.8;
+  text-decoration: none;
+  color: $pri_colour;
+}
+
+/*buttons btn button*/
+.btn-primary, .btn-primary:hover 
+{
+  color: #fff;
+  background-color: $pri_colour;
+  border: none;
+}
+
+.btn-primary:hover 
+{
+
+}
+
+/* forms */
+input, textarea, select, .uneditable-input 
+{
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+
+}
+
+input {
+  height: auto !important;
+}
+
+/* forms */
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
   }
+}
 
-  section {
-    overflow: auto;
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
   }
-
-  textarea {
-    resize: vertical;
-  }
-
-  .center {
-    text-align: center;
-  }
-
-  .center h1 {
-    margin-bottom: 10px;
-  }
-
-  img
-  {
-    width: 100%;
-    height: 100%;
-  }
-
-  /* typography */
-  h1, h2, h3, h4, h5, h6 {
-    line-height: 1;
-    font-family: 'Open Sans', sans-serif;
-  }
-
-  h1 {
-    font-size: 3em;
-    letter-spacing: -2px;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-
-  h2 {
-    font-size: 1.2em;
-    letter-spacing: -1px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: normal;
-    color: #777;
-  }
-
-  p {
-    font-size: 1.1em;
-    line-height: 1.7em;
-  }
-
-  a
-  {
-    color: $pri_colour;
-    transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
-  }
-
-  a:hover, a:focus
-  {
-    opacity:0.8;
-    text-decoration: none;
-    color: $pri_colour;
-  }
-
-  /*buttons btn button*/
-  .btn-primary, .btn-primary:hover 
-  {
-    color: #fff;
-    background-color: $pri_colour;
-    border: none;
-  }
-
-  .btn-primary:hover 
-  {
-
-  }
-
-
+}  
