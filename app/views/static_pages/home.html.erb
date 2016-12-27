@@ -1,15 +1,13 @@
 <% provide(:title, 'Home') %>
-<div class="center jumbotron">
-  <h1>Welcome to the Sample App</h1>
+<div class="center">
+  <h1>Welcome to Chai Store</h1>
 
   <h2>
-    This is the home page for the
-    <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
+    A secondhand shop for you to sell and buy items.
   </h2>
 
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>   <!--  CHANGED LINE -->
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-primary" %>   <!--  CHANGED LINE -->
 </div>      
 
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
+<%= link_to image_tag("default.png", alt: "Rails logo"),
+            '#' %>
