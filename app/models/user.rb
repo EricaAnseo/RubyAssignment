@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 	attr_accessor :remember_token
-	
+	# Association with Product. A user can add many products
+	has_many :products, dependent: :destroy
 	validates :name, presence: true, length: { in: 9..30 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
@@ -36,5 +37,9 @@ class User < ApplicationRecord
 	def forget
 		update_attribute(:remember_digest, nil)
 	end
+
+	def feed
+        Product.where("user_id = ?", id)
+    end
 
 end

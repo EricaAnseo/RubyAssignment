@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 	def show
-	 @user = User.find(params[:id])
+	  @user = User.find(params[:id])
+    @products = @user.products 
+    @product = current_user.products.build if logged_in?
 	end
 
 	def new

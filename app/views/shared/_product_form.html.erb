@@ -1,0 +1,9 @@
+<%= form_for(@product) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field">
+		<%= f.text_field :prodname, placeholder: "Product Name" %>
+		<%= f.text_area :description, placeholder: "Add a new product..." %>
+		<%= f.number_field :price, in: 1.0..20.0, step: 0.5, placeholder: "Price", default: 0 %>
+	</div>
+	<%= f.submit "Add", class: "btn btn-primary" %>
+<% end %>
