@@ -2,6 +2,14 @@ class User < ApplicationRecord
 	attr_accessor :remember_token
 	# Association with Product. A user can add many products
 	has_many :products, dependent: :destroy
+	has_many :wishlists
+    has_many :wishlisted_products, :class_name => "Product", :through => :wishlists, :source => :product
+    has_many :reviews
+    has_many :reviewed_products, :class_name => "Product", :through => :reviews, :source => :product
+    has_many :purchases
+    has_many :purchase_products, :class_name => "Product", :through => :purchases, :source => :product
+
+
 	validates :name, presence: true, length: { in: 9..30 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
