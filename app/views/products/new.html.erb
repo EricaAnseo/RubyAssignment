@@ -1,0 +1,26 @@
+<% provide(:title, 'Add Product') %>
+<h1>Add Product</h1>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+	<%= form_for(@product) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		<%= f.label 'Product Name' %>
+		<%= f.text_field :prodname, class: 'form-control' %>
+
+		<%= f.label 'Description' %>
+		<%= f.text_area :description, class: 'form-control' %>
+
+		<%= f.label 'Price   (€)' %>
+		<%= f.number_field :price, min:0, step: 0.01, value: 0, class: 'form-control' %>
+
+		<%= f.label 'Shipping Cost' %>
+		<%= f.number_field :ship_cost, min:0, step: 0.01, value: 0, class: 'form-control' %>
+
+		<%= f.label 'Stock' %>
+		<%= f.number_field :stock, min:0, step: 0.01, value: 0, class: 'form-control' %>
+
+		<%= f.submit "Add a Product", class: "btn btn-primary" %>
+	<% end %>
+	</div>
+</div>

@@ -1,9 +1,12 @@
-<li id="product-<%= product.id %>">
-	<%= link_to "Insert Product Icon", product.user %>
-	<span class="user"><%= link_to product.user.name, product.user %></span>
-	<span class="content"><%= product.description %></span>
+<div class="col-sm-4" id="product-<%= product.id %>">
+	<%= product.img_path %>
+	
+	<h4 class="prod-name"><%= product.prodname %></h4>
+	<span class="prod-desc"><%= product.description %></span><br>
+	<span class="prod-price">€<%= product.price %></span><br>
+	<span class="user"><%= product.user.name %></span><br>
 	<span class="timestamp">
-		Posted <%= time_ago_in_words(product.created_at) %> ago.
+		<%= time_ago_in_words(product.created_at) %> ago. <br>
 		 <!-- START DELETE LINK -->
         <% if current_user?(product.user) %>
           <%= link_to "delete", product, method: :delete,
@@ -11,4 +14,4 @@
         <% end %>
         <!-- END DELETE LINK -->
 	</span>
-</li>
+</div>
