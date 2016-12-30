@@ -42,3 +42,18 @@
       color: #fff;
       text-decoration: none;
     }
+
+    nav 
+    {
+      .nav
+      {
+        text-align: right !important;
+
+        li 
+        {
+          position: relative;
+          display: inline-block !important;
+        }
+      }
+    
+    } 

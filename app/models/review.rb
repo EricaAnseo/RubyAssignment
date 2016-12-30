@@ -1,4 +1,4 @@
-require_relative "./reviewValidator"
+require_relative "./review_validator"
 class Review < ApplicationRecord
 	belongs_to :user
 	belongs_to :product

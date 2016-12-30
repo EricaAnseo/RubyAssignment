@@ -1,12 +1,12 @@
-<div class="col-sm-4" id="product-<%= product.id %>">
+<div class="col-sm-4 product-item" id="product-<%= product.id %>">
 	<%= product.img_path %>
 	
 	<h4 class="prod-name"><%= product.prodname %></h4>
 	<span class="prod-desc"><%= product.description %></span><br>
-	<span class="prod-price">€<%= product.price %></span><br>
+	<span class="prod-price"><%= number_to_currency(product.price, :locale => :en) %></span><br>
 	<span class="user"><%= product.user.name %></span><br>
 	<span class="timestamp">
-		<%= time_ago_in_words(product.created_at) %> ago. <br>
+		<%= time_ago_in_words(product.created_at) %> ago <br>
 		 <!-- START DELETE LINK -->
         <% if current_user?(product.user) %>
           <%= link_to "delete", product, method: :delete,
@@ -14,4 +14,15 @@
         <% end %>
         <!-- END DELETE LINK -->
 	</span>
+	<% if logged_in? %>
+		<%= form_for(@purchase) do |f| %>
+	        <div class="input-group">
+	        	<%= f.number_field :quantity, value: 1, class: "form-control", min: 1, max:product.stock %>
+				<div class="input-group-btn">
+					<%= f.hidden_field :product_id, value: product.id %>
+					<%= f.submit "Purchase", class: "btn btn-primary" %> 
+				</div>
+	        </div>
+      	<% end %>
+    <% end %>
 </div>

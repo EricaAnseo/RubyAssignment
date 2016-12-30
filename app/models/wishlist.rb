@@ -1,4 +1,4 @@
-require_relative "./wishlistValidator"
+require_relative "./wishlist_validator"
 
 class Wishlist < ApplicationRecord
 	belongs_to :user

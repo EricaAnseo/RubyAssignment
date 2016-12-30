@@ -1,13 +1,15 @@
 class ProductsController < ApplicationController
-	before_action :logged_in_user, only: [:create, :destroy]
+	before_action :logged_in_user, only: [:create, :update, :destroy]
 	before_action :correct_user,   only: :destroy
 
 	def shop
 		@products = Product.all.order('created_at DESC')
+		@purchase = Purchase.new
 	end
 
 	def new
 		@product = Product.new
+		@purchase = Purchase.new 
 	end
 
 	def create
@@ -22,6 +24,13 @@ class ProductsController < ApplicationController
 			render 'user/:user.id'
 		end
 	end
+
+	def update
+	    @product = current_product
+	    @product_item = @product.order_items.find(params[:id])
+	    @product_item.update_attributes(product_item_params)
+	    @product_items = @product.product_items
+  	end
 
 	# UPDATED IMPLEMENTATION
 	def destroy

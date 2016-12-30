@@ -3,10 +3,14 @@ class UsersController < ApplicationController
 	  @user = User.find(params[:id])
     @products = @user.products 
     @product = current_user.products.build if logged_in?
+    if logged_in?
+        @product  = current_user.products.build
+        @feed_items = current_user.feed
+    end
 	end
 
 	def new
-	 @user = User.new
+	  @user = User.new
 	end
 
 	def create
@@ -22,5 +26,9 @@ class UsersController < ApplicationController
       # Handle an unsuccessful save.  
       render 'new' 
     end
+  end
+
+  def feed
+    Product.where("user_id = ?", id)
   end
 end

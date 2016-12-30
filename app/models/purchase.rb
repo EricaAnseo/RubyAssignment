@@ -1,3 +1,4 @@
+require_relative "./purchase_validator"
 class Purchase < ApplicationRecord
 	belongs_to :user
 	belongs_to :product
@@ -5,5 +6,5 @@ class Purchase < ApplicationRecord
 	validates :product_id, presence: true
 
 	include ActiveModel::Validations
-	validates_with purchaseValidator
+	validates_with PurchaseValidator
 end
