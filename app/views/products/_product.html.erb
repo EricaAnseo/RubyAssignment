@@ -1,29 +1,68 @@
 <div class="col-sm-6 product-item" id="product-<%= product.id %>">
 	<%= product.img_path %>
-	
-	<h4 class="prod-name"><%= product.prodname %></h4>
+
+	<div class="row">
+		<div class="col-sm-9">
+			<h4 class="prod-name"><%= product.prodname %></h4>
+		</div>
+		<div class="col-sm-3">
+			<h5 class="prod-price"><%= number_to_currency(product.price, :locale => :en) %></h5>
+		</div>
+	</div>
 	<span class="prod-desc"><%= product.description %></span><br>
-	<span class="prod-price"><%= number_to_currency(product.price, :locale => :en) %></span><br>
-	<span class="user"><%= product.user.name %></span><br>
-	<span class="timestamp">
-		<%= time_ago_in_words(product.created_at) %> ago <br>
-		 <!-- START DELETE LINK -->
-        <% if current_user?(product.user) %>
-          <%= button_to "delete", product, method: :delete,
-                                           data: { confirm: "You sure?" } %>
-        <% end %>
-        <!-- END DELETE LINK -->
-	</span>
+	<div class="row">
+		<div class="col-xs-6">
+			<span class="user"><%= product.user.name %></span><br>
+		</div>
+		<div class="col-xs-6">
+			<span class="timestamp">
+				<%= time_ago_in_words(product.created_at) %> ago <br>
+			</span>
+		</div>
+	</div>
+	
+	
+	<% if !current_page?('/') %>
+		<!-- START DELETE LINK -->
+		<% if current_user?(product.user) %>
+			<div class="row">
+				<div class="col-sm-6">
+					<%= button_to "Update", product, method: 
+					:edit, class: "btn btn-primary product-update" %>
+				</div>
+				<div class="col-sm-6">
+					<%= button_to "Delete", product, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary product-delete" %>
+				</div>
+			</div>
+
+			
+		<% end %>
+		<!-- END DELETE LINK -->
+	<% end %>
+	
+	
 	<% if logged_in?  %>
 		<% if !current_user?(product.user) %>
-		<%= form_for(@purchase) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %>
-			<div class="field">
-				<%= f.number_field :amount, step: 1, placeholder: "Amount", default: 0 %>
+			<div class="row product-button">
+				<div class="col-sm-7">
+					<%= form_for(@purchase) do |f| %>
+						<%= render 'shared/error_messages', object: f.object %>
+						<div class="row">
+							<div class="col-sm-7">
+								<div class="field">
+									<%= f.number_field :amount, step: 1, placeholder: "Amount", default: 0, class: "form-control" %>
+								</div>
+							</div>
+							<div class="col-sm-5">
+								<%= f.submit "Buy", class: "btn btn-primary" %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+				<div class="col-sm-5">
+					<%= button_to 'Add to Wishlist', {method: :add_to_cart, :id => product}, {class: "btn btn-primary"} %>
+				</div>
 			</div>
-			<%= f.submit "Add to Cart", class: "btn btn-primary" %>
-		<% end %>
-		<%= button_to 'Add to Wishlist', method: :add_to_cart, :id => product%>
 		<% end %>
 	<% end %>
 </div>

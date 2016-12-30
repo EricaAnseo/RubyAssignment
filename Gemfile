@@ -10,10 +10,14 @@ source 'https://rubygems.org'
     gem 'jbuilder',     '2.4.1'
     gem 'bootstrap-sass',    '3.3.7' 
     gem 'bcrypt',       '3.1.11'
+    gem 'faker',          '1.6.6'
     gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
     gem 'acts_as_votable', '~> 0.10.0'
-    gem 'kaminari', '~> 0.17.0'
+    #gem 'kaminari', '~> 0.17.0'
     gem 'sunspot_rails', '~> 2.2', '>= 2.2.7'
+    gem 'will_paginate',           '3.1.0'
+    gem 'bootstrap-will_paginate', '0.0.10'
+
 
 
     group :development, :test do
@@ -36,6 +40,7 @@ source 'https://rubygems.org'
     end
 
     group :production do
+      gem 'unicorn'
       gem 'pg', '0.18.4'
     end
 

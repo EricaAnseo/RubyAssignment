@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 	before_action :correct_user,   only: :destroy
 
 	def shop
-		@products = Product.all.order('created_at DESC')
+		@products = Product.all.order('created_at DESC').paginate(page: params[:page], :per_page => 20)
 		@purchase = Purchase.new
 	end
 
@@ -25,11 +25,18 @@ class ProductsController < ApplicationController
 		end
 	end
 
+	def edit
+	    @product = Product.find(params[:id])
+  	end
+
 	def update
-	    @product = current_product
-	    @product_item = @product.order_items.find(params[:id])
-	    @product_item.update_attributes(product_item_params)
-	    @product_items = @product.product_items
+	    @product = Product.find(params[:id])
+	    if @product.update_attributes(product_params)
+	      flash[:success] = "Product updated"
+	      redirect_to @product
+	    else
+	      render 'edit'
+	    end
   	end
 
 	# UPDATED IMPLEMENTATION
@@ -40,10 +47,15 @@ class ProductsController < ApplicationController
 	end
 
 	# NEW PRIVATE METHOD
-	private def correct_user
-		  @product = current_user.products.find_by(id: params[:id])
-		  redirect_to root_url if @product.nil?
-	end
+	#private def correct_product
+		#@product = current_user.products.find_by(id: params[:id])
+		#redirect_to root_url if @product.nil?
+	#end
+
+	def correct_product
+      @product = Product.find(params[:id])
+      redirect_to(root_url) unless @product == current_product
+    end
 
 	def add_to_cart
 		secure_post = params.require(:purchase).permit(:id)
@@ -68,4 +80,14 @@ class ProductsController < ApplicationController
 			render 'users/show'
 		end
 	end
+
+	def remove_from_stock
+	    product.stock -= self.quantity
+	    product.save
+	end
+
+	private def product_params
+    	params.require(:product).permit(:prodname, 
+			:description, :price, :ship_cost, :stock)
+  	end
 end

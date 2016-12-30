@@ -50,9 +50,21 @@ module SessionsHelper
 
 	def logged_in_user
         unless logged_in?
-          flash[:notice] = "Please log in"
-          redirect_to login_url
+        	store_location
+          	flash[:notice] = "Please log in"
+          	redirect_to login_url
         end
     end 
+
+    # Confirms the correct user.
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def redirect_back_or(default)
+	  redirect_to(session[:return_to] || default)
+	  session.delete(:return_to)
+	end 
 
 end
