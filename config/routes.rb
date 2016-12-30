@@ -15,12 +15,21 @@ Rails.application.routes.draw do
     post '/login', 	 to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
 
-    get  '/',	 to: 'products#new'
-    post '/', 	 to: 'products#create'
-    delete '/', to: 'products#destroy'
+    get  '/',	 to: 'purchases#new'
+    post '/', 	 to: 'purchases#create'
 
+    get  '/',	 to: 'products#add_to_wishlist'
+    post '/', 	 to: 'products#add_to_wishlist'
+
+    get '/add_to_cart/:id' => 'products#add_to_cart'
+    post '/add_to_cart/:id' => 'products#add_to_cart'
+
+    get '/users/:id' => 'products#add_to_cart'
+    post '/users/:id' => 'products#add_to_cart'
+
+    get '/purchases' => 'purchases#new'
+    post '/purchases' => 'purchases#create'
 
     get  '/addproduct',	 to: 'products#new'
-    #get  '/shop',	 to: 'products#shop'
-
+    
 end

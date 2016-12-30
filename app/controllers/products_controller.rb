@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
 			redirect_to root_url
 		else
 			@feed_items = []
-			render 'user/:user.id'
+			render 'users/show'
 		end
 	end
 
@@ -43,5 +43,29 @@ class ProductsController < ApplicationController
 	private def correct_user
 		  @product = current_user.products.find_by(id: params[:id])
 		  redirect_to root_url if @product.nil?
+	end
+
+	def add_to_cart
+		secure_post = params.require(:purchase).permit(:id)
+		@purchase = current_user.purchases.build(secure_post) 
+		if @purchase.save
+			flash[:success] = "Product bought!"
+			redirect_to root_url
+		else
+			@feed_items = []
+			render 'users/show'
+		end
+	end
+
+	def add_to_wishlist
+		secure_post = params.require(:purchase)
+		@wishlist = current_user.purchases.build(secure_post) 
+		if @wishlist.save
+			flash[:success] = "Product bought!"
+			redirect_to root_url
+		else
+			@feed_items = []
+			render 'users/show'
+		end
 	end
 end

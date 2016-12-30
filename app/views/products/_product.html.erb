@@ -1,4 +1,4 @@
-<div class="col-sm-4 product-item" id="product-<%= product.id %>">
+<div class="col-sm-6 product-item" id="product-<%= product.id %>">
 	<%= product.img_path %>
 	
 	<h4 class="prod-name"><%= product.prodname %></h4>
@@ -9,20 +9,21 @@
 		<%= time_ago_in_words(product.created_at) %> ago <br>
 		 <!-- START DELETE LINK -->
         <% if current_user?(product.user) %>
-          <%= link_to "delete", product, method: :delete,
+          <%= button_to "delete", product, method: :delete,
                                            data: { confirm: "You sure?" } %>
         <% end %>
         <!-- END DELETE LINK -->
 	</span>
-	<% if logged_in? %>
+	<% if logged_in?  %>
+		<% if !current_user?(product.user) %>
 		<%= form_for(@purchase) do |f| %>
-	        <div class="input-group">
-	        	<%= f.number_field :quantity, value: 1, class: "form-control", min: 1, max:product.stock %>
-				<div class="input-group-btn">
-					<%= f.hidden_field :product_id, value: product.id %>
-					<%= f.submit "Purchase", class: "btn btn-primary" %> 
-				</div>
-	        </div>
-      	<% end %>
-    <% end %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<div class="field">
+				<%= f.number_field :amount, step: 1, placeholder: "Amount", default: 0 %>
+			</div>
+			<%= f.submit "Add to Cart", class: "btn btn-primary" %>
+		<% end %>
+		<%= button_to 'Add to Wishlist', method: :add_to_cart, :id => product%>
+		<% end %>
+	<% end %>
 </div>

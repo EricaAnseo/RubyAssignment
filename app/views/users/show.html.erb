@@ -1,4 +1,4 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, 'User') %>
 <% if logged_in? %>
 	<div class="row">
 		<aside class="col-sm-4">
@@ -7,23 +7,31 @@
 			</section>
 		</aside>
 		<aside class="col-sm-8">
-			<section class="user_info">
-				<%= render 'shared/feed' %>
-			</section>
+			<div class="row">
+				<div class="col-md-12">
+					<section class="user_feed">
+						<h3>Your Products</h3>
+						<%= render 'shared/feed' %>
+					</section>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<section class="user_info">
+						<h3>Your Wishlist</h3>
+						
+					</section>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<section class="user_info">
+						<h3>Your History</h3>
+					</section>
+				</div>
+			</div>
 		</aside>
 	</div>
 <% else %>
 	Sorry, you do not have access to this page. Please login to view this page. 
-	<h1><%= @user.name %></h1>
-	<div class="row">
-		<div class="col-md-12">
-	        <% if @user.products.any? %>
-	          <h3>Products (<%= @user.products.count %>)</h3>
-	          <ol class="products">
-	            <%= render @products %> <!--Construct the partial's of products/_product.html.erb  -->
-	          </ol>
-	        <% end %>
-	    </div>
-	    <%= render 'shared/feed' %>
-	</div>
 <% end %>
