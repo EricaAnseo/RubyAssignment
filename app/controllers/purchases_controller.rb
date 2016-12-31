@@ -14,7 +14,7 @@ class PurchasesController < ApplicationController
 	end
 
 	def create
-		secure_post = params.require(:purchase)
+		secure_post = params.require(:purchase).permit(:amount)
 		@purchase = current_user.purchases.build(secure_post) 
 		if @purchase.save
 			flash[:success] = "Product bought!"

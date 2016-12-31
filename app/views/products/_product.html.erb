@@ -1,6 +1,6 @@
 <div class="col-sm-6 product-item" id="product-<%= product.id %>">
-	<%= product.img_path %>
 
+<%= image_tag product.avatar %>
 	<div class="row">
 		<div class="col-sm-9">
 			<h4 class="prod-name"><%= product.prodname %></h4>
@@ -27,7 +27,7 @@
 		<% if current_user?(product.user) %>
 			<div class="row">
 				<div class="col-sm-6">
-					<%= button_to "Update", product, method: 
+					<%= button_to "Edit", product, method: 
 					:edit, class: "btn btn-primary product-update" %>
 				</div>
 				<div class="col-sm-6">

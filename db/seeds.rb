@@ -6,20 +6,34 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name:  "Example User",
-             email: "example@sample.org",
-             password:              "foobar",
-             password_confirmation: "foobar", 
+User.create!(name:  "Erica Chai",
+             email: "20063209@mail.wit.ie",
+             password:              "password",
+             password_confirmation: "password", 
              admin: true)
 
-99.times do |n|
+30.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@sample.org"
   password = "password"
+  address = Faker::Address.street_address + Faker::Address.street_name + Faker::Address.city + Faker::Address.country
+  avatar = Faker::Avatar.image 
   User.create!(name:  name,
                email: email,
+               address: address,
                password:              password,
                password_confirmation: password)
+end
+
+15.times do |c|
+  prodname = Faker::Commerce.product_name
+  price = Faker::Commerce.price
+  user = User.find(c+1)
+  user.products.create!(prodname: prodname, 
+                        description:"N/A",
+                        price: price, 
+                        ship_cost: c+0.99, 
+                        stock: c+10)
 end
 
 # Create some users

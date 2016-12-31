@@ -7,13 +7,15 @@
 	<%= f.text_area :description, class: 'form-control' %>
 
 	<%= f.label 'Price   (€)' %>
-	<%= f.number_field :price, min:0, step: 0.01, value: 0, class: 'form-control' %>
+	<%= f.number_field :price, min:0, step: 0.01, class: 'form-control' %>
 
 	<%= f.label 'Shipping Cost' %>
-	<%= f.number_field :ship_cost, min:0, step: 0.01, value: 0, class: 'form-control' %>
+	<%= f.number_field :ship_cost, min:0, step: 0.01, class: 'form-control' %>
 
 	<%= f.label 'Stock' %>
-	<%= f.number_field :stock, min:0, step: 0.01, value: 0, class: 'form-control' %>
+	<%= f.number_field :stock, min:0, step: 0.01, class: 'form-control' %>
 
-	<%= f.submit "Add a Product", class: "btn btn-primary" %>
+	<%= f.file_field :avatar %>
+
+	<%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

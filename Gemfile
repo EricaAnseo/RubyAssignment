@@ -17,6 +17,8 @@ source 'https://rubygems.org'
     gem 'sunspot_rails', '~> 2.2', '>= 2.2.7'
     gem 'will_paginate',           '3.1.0'
     gem 'bootstrap-will_paginate', '0.0.10'
+    gem 'carrierwave', '~> 1.0'
+    gem 'mini_magick', '~> 4.3'
 
 
 

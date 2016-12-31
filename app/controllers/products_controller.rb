@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
 
 	def create
 		secure_post = params.require(:product).permit(:prodname, 
-			:description, :price, :ship_cost, :stock)
+			:description, :price, :ship_cost, :stock, :avatar)
 		@product = current_user.products.build(secure_post) 
 		if @product.save
 			flash[:success] = "Product created!"
@@ -88,6 +88,6 @@ class ProductsController < ApplicationController
 
 	private def product_params
     	params.require(:product).permit(:prodname, 
-			:description, :price, :ship_cost, :stock)
+			:description, :price, :ship_cost, :stock, :avatar)
   	end
 end

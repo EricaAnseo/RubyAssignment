@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
+  
 
 	def show
 	  @user = User.find(params[:id])
@@ -22,9 +23,10 @@ class UsersController < ApplicationController
 
 	def create
     secure_params = params.require(:user).permit(:name, :email, 
-                              :password, :password_confirmation)
+                              :password, :password_confirmation, :avatar)
     @user = User.new(secure_params)
     if @user.save
+
       # Handle a successful save.
       remember @user 
       flash[:success] = "Welcome to Chai Store!"
@@ -55,7 +57,7 @@ class UsersController < ApplicationController
 
   private def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation, :avatar)
   end
 
   # Confirms a logged-in user.

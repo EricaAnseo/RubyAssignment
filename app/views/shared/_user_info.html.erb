@@ -1,5 +1,9 @@
+<div>
+	<%= image_tag current_user.avatar %>
+</div>
 <h1><%= current_user.name %></h1>
 <h4><%= current_user.email %></h4>
+
 <span>
 	<%= pluralize(current_user.products.count, "product") %>
 </span>

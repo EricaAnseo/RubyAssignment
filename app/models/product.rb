@@ -16,4 +16,6 @@ class Product < ApplicationRecord
     has_many :purchases
     has_many :purchased_user, :through => :purchases,
                 :source => :user
+
+    mount_uploader :avatar, AvatarUploader
 end

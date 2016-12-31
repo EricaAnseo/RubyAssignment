@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     delete '/logout', to: 'sessions#destroy'
     
     get  '/addproduct',  to: 'products#new'
-    get  '/product/:id/edit',  to: 'products#edit'
+
+    get  '/products/:id',  to: 'products#edit'
+    post  '/products/:id',  to: 'products#edit'
 
 	resources :users
 	resources :purchases, only: [:create]
@@ -26,12 +28,6 @@ Rails.application.routes.draw do
 
     get  '/',	 to: 'products#add_to_wishlist'
     post '/', 	 to: 'products#add_to_wishlist'
-
-    get '/add_to_cart/:id' => 'products#add_to_cart'
-    post '/add_to_cart/:id' => 'products#add_to_cart'
-
-    get '/users/:id' => 'products#add_to_cart'
-    post '/users/:id' => 'products#add_to_cart'
 
     get '/purchases' => 'purchases#new'
     post '/purchases' => 'purchases#create'
