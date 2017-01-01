@@ -1,0 +1,29 @@
+<% if logged_in?  %>
+	<% if !current_user?(product.user) %>
+	<%= render 'like_buttons', product: product %>
+		<div class="row product-button">
+			<div class="col-sm-7">
+				<%= form_for @purchase, url: purchase_product_path(product.id) do |f| %>
+					<%= render 'shared/error_messages', object: f.object %>
+					<div class="row">
+						<div class="col-sm-7">
+							<div class="field">
+								<%= f.number_field :amount, step: 1, placeholder: "Amount", default: 0, class: "form-control" %>
+							</div>
+						</div>
+						<div class="col-sm-5">
+							<%= f.submit "Buy", class: "btn btn-primary" %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+
+
+			<div class="col-sm-5">
+				<%= link_to wishlist_product_path(product), method: :post, class: "btn btn-primary" do %>
+					Add to Wishlist
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+<% end %>

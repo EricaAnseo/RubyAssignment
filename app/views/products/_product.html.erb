@@ -1,6 +1,5 @@
-<div class="col-sm-6 product-item" id="product-<%= product.id %>">
-
-<%= image_tag product.avatar %>
+<div class="col-xs-6 product-item" id="product-<%= product.id %>">
+	<%= image_tag product.avatar %>
 	<div class="row">
 		<div class="col-sm-9">
 			<h4 class="prod-name"><%= product.prodname %></h4>
@@ -20,49 +19,6 @@
 			</span>
 		</div>
 	</div>
-	
-	
-	<% if !current_page?('/') %>
-		<!-- START DELETE LINK -->
-		<% if current_user?(product.user) %>
-			<div class="row">
-				<div class="col-sm-6">
-					<%= button_to "Edit", product, method: 
-					:edit, class: "btn btn-primary product-update" %>
-				</div>
-				<div class="col-sm-6">
-					<%= button_to "Delete", product, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary product-delete" %>
-				</div>
-			</div>
-
-			
-		<% end %>
-		<!-- END DELETE LINK -->
-	<% end %>
-	
-	
-	<% if logged_in?  %>
-		<% if !current_user?(product.user) %>
-			<div class="row product-button">
-				<div class="col-sm-7">
-					<%= form_for(@purchase) do |f| %>
-						<%= render 'shared/error_messages', object: f.object %>
-						<div class="row">
-							<div class="col-sm-7">
-								<div class="field">
-									<%= f.number_field :amount, step: 1, placeholder: "Amount", default: 0, class: "form-control" %>
-								</div>
-							</div>
-							<div class="col-sm-5">
-								<%= f.submit "Buy", class: "btn btn-primary" %>
-							</div>
-						</div>
-					<% end %>
-				</div>
-				<div class="col-sm-5">
-					<%= button_to 'Add to Wishlist', {method: :add_to_cart, :id => product}, {class: "btn btn-primary"} %>
-				</div>
-			</div>
-		<% end %>
-	<% end %>
+	<%= render 'products/admin_buttons', product: product %>
+	<%= render 'products/user_buttons', product: product %>	
 </div>

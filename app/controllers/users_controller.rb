@@ -10,6 +10,10 @@ class UsersController < ApplicationController
     if logged_in?
         @product  = current_user.products.build
         @feed_items = current_user.feed
+        @wishlist  = current_user.products.build
+        @wishlist_items = current_user.feed_wishlist
+        @purchase  = current_user.products.build
+        @purchase_items = current_user.feed_purchase
     end
 	end
 
@@ -49,10 +53,6 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def feed
-    Product.where("user_id = ?", id)
   end
 
   private def user_params

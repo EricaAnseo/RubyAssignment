@@ -18,4 +18,8 @@ class Product < ApplicationRecord
                 :source => :user
 
     mount_uploader :avatar, AvatarUploader
+
+    acts_as_votable
+
+
 end

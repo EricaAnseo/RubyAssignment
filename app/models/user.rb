@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
     mount_uploader :avatar, AvatarUploader
 
+    acts_as_voter
+
     # Returns the hash digest of the given string.
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -50,6 +52,14 @@ class User < ApplicationRecord
 
 	def feed
         Product.where("user_id = ?", id)
+    end
+
+    def feed_wishlist
+        Wishlist.where("user_id = ?", id)
+    end
+
+    def feed_purchase
+        Purchase.where("user_id = ?", id)
     end
 
 end

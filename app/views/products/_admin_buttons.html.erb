@@ -1,0 +1,15 @@
+<% if !current_page?('/') %>
+	<!-- START DELETE LINK -->
+	<% if current_user?(product.user) %>
+		<div class="row">
+			<div class="col-sm-6">
+				<%= button_to "Edit", product, method: 
+				:edit, class: "btn btn-primary product-update" %>
+			</div>
+			<div class="col-sm-6">
+				<%= button_to "Delete", product, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary product-delete" %>
+			</div>
+		</div>
+	<% end %>
+	<!-- END DELETE LINK -->
+<% end %>

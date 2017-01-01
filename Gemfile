@@ -19,6 +19,7 @@ source 'https://rubygems.org'
     gem 'bootstrap-will_paginate', '0.0.10'
     gem 'carrierwave', '~> 1.0'
     gem 'mini_magick', '~> 4.3'
+    
 
 
 
