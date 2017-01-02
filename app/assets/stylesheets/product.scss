@@ -22,3 +22,20 @@ input[type=submit]
 {
     margin-bottom: 10px;
 }
+
+.like-buttons
+{
+	margin-top: 5px;
+	font-size: 16px;
+
+	.fa-thumbs-up
+	{
+		margin-left: 10px;
+	}
+
+	.fa-thumbs-down
+	{
+		margin-left: 10px;
+	}
+
+}

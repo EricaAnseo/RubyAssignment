@@ -2,6 +2,8 @@
 
   /* header */
 
+  
+
   $pri_colour: #927192;
 
     header
@@ -15,14 +17,93 @@
 
     }
 
-    .nav 
+    .nav, .navbar-nav
     {
+      float: right;
+
+      @media (min-width: 768px)
+      {
+        li 
+        {
+          padding-bottom: 1px;
+        }
+      }
+
       li
       {
+        float: left;
+
         a:hover, a:focus
         {
           background-color: transparent;
           opacity: 0.8;
+          color: #eeeeee;
+        }
+
+      }
+
+      .dropdown
+      {
+        position: relative;
+        display: inline-block;
+
+        a:focus
+        {
+          color: #ccc !important;
+          background-color: transparent;
+          opacity: 0.8;
+        }
+
+        .dropdown-menu 
+        {
+          li 
+          {
+            float: none;
+
+            a 
+            {
+              color: #ccc;
+            }
+          }
+        } 
+      }
+
+      .open 
+      {
+        a
+        {
+          background-color: transparent;
+          border-color: transparent;
+        }
+
+        .dropdown-menu
+          {
+            li
+            {
+              a 
+              {
+                color: #888;
+              }
+            }
+          }
+
+        @media (max-width: 767px)
+        {
+          .dropdown-menu
+          {
+            position: absolute;
+            background-color: #fff;
+            margin-top: 9px;
+
+            li
+            {
+              a 
+              {
+                padding-left: 10px;
+                color: #888;
+              }
+            }
+          }
         }
       }
     }
@@ -43,6 +124,8 @@
       text-decoration: none;
     }
 
+    /*
+
     nav 
     {
       .nav
@@ -56,4 +139,4 @@
         }
       }
     
-    } 
+    } */

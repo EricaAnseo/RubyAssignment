@@ -8,12 +8,14 @@
 /* SCSS variables */
 $pri_colour: #927192;
 $sec_colour: #ccc;
+$font_colour: #666;
 
 
 /* universal */
 body {
   padding-top: 60px;
   font-family: 'Lato', sans-serif;
+  color: $font_colour;
 }
 
 section {
@@ -82,16 +84,25 @@ a:hover, a:focus
 }
 
 /*buttons btn button*/
-.btn-primary, .btn-primary:hover 
+.btn-primary,.btn-primary:focus, 
+.btn-primary.focus, .btn-primary:hover 
 {
   color: #fff;
   background-color: $pri_colour;
   border: none;
 }
 
+.btn-primary
+{
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+}
+
 .btn-primary:hover 
 {
-
+  opacity: 0.8;
 }
 
 /* forms */
@@ -106,8 +117,6 @@ input, textarea, select, .uneditable-input
 input {
   height: auto !important;
 }
-
-/* forms */
 
 #error_explanation {
   color: red;

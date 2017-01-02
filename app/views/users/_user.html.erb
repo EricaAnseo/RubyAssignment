@@ -1,6 +1,17 @@
-<li>
-	<%= link_to user.name, user %>
-	<% if current_user.admin? && !current_user?(user) %>
-		<%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+<% if logged_in?  %>
+	<% if !current_user?(user) %>
+		<li class="list-user col-sm-4">
+			<div class="list-user-profile">
+				<%= link_to image_tag(user.avatar), user %>
+			</div>
+			<div class="list-user-name">
+				<%= link_to user.name, user %>
+			</div>
+			<div class="list-user-delete">
+				<% if current_user.admin? && !current_user?(user) %>
+					<%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary"  %>
+				<% end %>
+			</div>
+		</li>
 	<% end %>
-</li>
+<% end %>

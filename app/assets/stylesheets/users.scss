@@ -6,3 +6,28 @@
 {
     -webkit-padding-start: 0px;
 }
+
+.users
+{
+	.list-user
+	{
+		list-style: none;
+		//border-bottom: 1px #ccc solid;
+
+		.list-user-name
+		{	
+			padding: 10px;	
+		}
+
+		.list-user-delete
+		{
+
+		}
+		
+		.list-user-profile
+		{
+
+		}
+
+	}
+}

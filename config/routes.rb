@@ -22,29 +22,20 @@ Rails.application.routes.draw do
 	resources :products, only: [:create, :destroy] 
 	resources :cart, only: [:show]
 
-
-    resources :products do  
+    resources :users do  
         member do
-            put "/like", to: "products#upvote"
-            put "/dislike", to: "products#downvote"
-            post "/wishlist", to: "products#add_to_wishlist"
-            post "/purchase", to: "products#purchase"
+            put '/profile', to: 'users#seller'
         end
     end  
 
-    
-
-    get  '/buy',	 to: 'purchases#new'
-    post '/buy', 	 to: 'purchases#create'
-
-    #get  '/',	 to: 'products#add_to_wishlist'
-    #post '/', 	 to: 'products#add_to_wishlist'
-
-    #get '/purchases' => 'purchases#new'
-    #post '/purchases' => 'purchases#create'
-
-    
-
+    resources :products do  
+        member do
+            put '/like', to: 'products#upvote'
+            put '/dislike', to: 'products#downvote'
+            post '/wishlist', to: 'products#add_to_wishlist'
+            post '/purchase', to: 'products#purchase'
+        end
+    end  
     
     
 end

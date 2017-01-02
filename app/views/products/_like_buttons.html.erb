@@ -1,9 +1,17 @@
-<%= link_to like_product_path(product), method: :put do %>
-	<i class="fa fa-thumbs-up" aria-hidden="true"></i>
-	<%= product.get_upvotes.size %>
-<% end %>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="like-buttons">
+			<%= link_to like_product_path(product), method: :put do %>
+				<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+				<%= product.get_upvotes.size %>
+			<% end %>
 
-<%= link_to dislike_product_path(product), method: :put do %>
-	<i class="fa fa-thumbs-down" aria-hidden="true"></i>
-	<%= product.get_downvotes.size %>
-<% end %>
+			<%= link_to dislike_product_path(product), method: :put do %>
+				<i class="fa fa-thumbs-down" aria-hidden="true"></i>
+				<%= product.get_downvotes.size %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+
