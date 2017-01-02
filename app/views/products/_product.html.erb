@@ -1,4 +1,4 @@
-<div class="col-xs-6 product-item" id="product-<%= product.id %>">
+<div class="col-xs-6 col-md-4 product-item" id="product-<%= product.id %>">
 	<% if current_page?(profile_path(product.user.id)) %> 
 		<%= render 'products/liststyle_product', product: product %>
 	<% else %> 
