@@ -10,8 +10,8 @@ class User < ApplicationRecord
     has_many :purchase_products, :class_name => "Product", :through => :purchases, :source => :product
 
     has_many :reputations
-    has_many :reviewer, through: :reputations, class_name: "User", foreign_key: :reviewer_id # The users this user has rated
-  	has_many :reviewee, through: :reputations, class_name: "User", foreign_key: :reviewee_id # The users that have rated this client
+    has_many :reviewer, class_name: "User", through: :reputations, foreign_key: :reviewer_id # The users this user has rated
+  	has_many :reviewee, class_name: "User", through: :reputations, foreign_key: :reviewee_id # The users that have rated this client
 
 
 	validates :name, presence: true, length: { in: 9..30 }
