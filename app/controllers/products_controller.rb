@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 	before_action :correct_user,   only: :destroy
 
 	def shop
-		@products = Product.all.order('created_at DESC').paginate(page: params[:page], :per_page => 20)
+		@products = Product.all.order('created_at DESC').paginate(page: params[:page], :per_page => 6)
 		@purchase = Purchase.new
 	end
 
