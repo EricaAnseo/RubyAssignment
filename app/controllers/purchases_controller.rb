@@ -10,6 +10,11 @@ class PurchasesController < ApplicationController
 	    
 	end
 
+	def profile
+	    @purchase = Purchase.new 
+		product = Product.find(params[:product_id])
+	end
+
 
 	def new
 		@purchase = Purchase.new 

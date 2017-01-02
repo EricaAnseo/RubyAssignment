@@ -1,0 +1,18 @@
+<%= form_for @rep, url: reputation_path(user.id) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="field">
+        <%= f.label :rating %>
+        <%= f.number_field :rating, min:1, max:10, step: 1, class: 'form-control' %>
+        <%= f.label :review %>
+        <%= f.text_area :comment, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">
+      <%= f.submit "Review", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

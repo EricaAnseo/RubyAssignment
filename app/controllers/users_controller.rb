@@ -14,19 +14,26 @@ class UsersController < ApplicationController
         @wishlist_items = current_user.feed_wishlist
         @purchase  = current_user.products.build
         @purchase_items = current_user.feed_purchase
+
     end
 	end
 
   def profile
-
+    @user = User.find(params[:id])
+    @feed_items = @user.feed
+    @purchase = Purchase.new 
+    user = User.find(params[:id])
+    @reputations = Reputation.where(reviewee_id: params[:id])
+    @rep = Reputation.new
   end
 
   def index
-    @users = User.paginate(page: params[:page], :per_page => 20)
+    @users = User.paginate(page: params[:page], :per_page => 12)
   end
 
 	def new
 	  @user = User.new
+    @reputation = Reputation.new 
 	end
 
 	def create
@@ -82,6 +89,20 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to users_url
+  end
+
+  def reputation 
+    secure_reputation = params.require(:reputation).permit(:id, :rating, :comment)
+    reputation = Reputation.new(secure_reputation)
+    reputation.reviewer_id = current_user.id
+    user = User.find(params[:id])
+    reputation.reviewee_id = user.id
+
+    if reputation.save
+      redirect_to :back
+    else
+
+    end
   end
 
 end

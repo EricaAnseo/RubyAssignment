@@ -1,6 +1,5 @@
 <% if logged_in?  %>
 	<% if !current_user?(product.user) %>
-	<%= render 'like_buttons', product: product %>
 		<div class="row product-button">
 			<div class="col-sm-7">
 				<%= form_for @purchase, url: purchase_product_path(product.id) do |f| %>
@@ -18,7 +17,7 @@
 				<% end %>
 			</div>
 			<div class="col-sm-5">
-				<%= link_to wishlist_product_path(product), method: :post, class: "btn btn-primary" do %>
+				<%= link_to wishlist_product_path(product), method: :post, class: "btn btn-primary btn-wishlist" do %>
 					Add to Wishlist
 				<% end %>
 			</div>

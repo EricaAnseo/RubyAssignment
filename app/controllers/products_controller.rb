@@ -70,9 +70,6 @@ class ProductsController < ApplicationController
       redirect_to(root_url) unless @product == current_product
     end
 
-
-
-
 	def purchase
 		secure_purchase = params.require(:purchase).permit(:amount)
 		purchase = Purchase.new(secure_purchase)

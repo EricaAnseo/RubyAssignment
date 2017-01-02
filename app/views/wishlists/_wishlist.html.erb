@@ -1,9 +1,7 @@
-<div class="col-sm-12">
-	<li>
-		<%= wishlist.product.prodname %>
-		<%= wishlist.product.price %> 
-		<div class="col-sm-6">
-			<%= button_to "Remove", wishlist, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary product-delete" %>
-		</div>
-	</li>
-</div>
+<li class="col-xs-12">
+	<h5><%= wishlist.product.prodname %></h5>
+	Price: <%= number_to_currency(wishlist.product.price) %> 
+	<%= link_to wishlist, method: :delete, data: { confirm: "Remove from your wishlist?" }, class: "wishlist-remove" do %>
+		<i class="fa fa-times" aria-hidden="true"></i>
+	<% end %>
+</li>

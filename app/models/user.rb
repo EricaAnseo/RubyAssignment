@@ -9,6 +9,10 @@ class User < ApplicationRecord
     has_many :purchases
     has_many :purchase_products, :class_name => "Product", :through => :purchases, :source => :product
 
+    has_many :reputations
+    has_many :reviewer, through: :reputations, class_name: "User", foreign_key: :reviewer_id # The users this user has rated
+  	has_many :reviewee, through: :reputations, class_name: "User", foreign_key: :reviewee_id # The users that have rated this client
+
 
 	validates :name, presence: true, length: { in: 9..30 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -50,6 +54,10 @@ class User < ApplicationRecord
 		update_attribute(:remember_digest, nil)
 	end
 
+	def profile
+        User.where("user_id = ?", id)
+    end
+
 	def feed
         Product.where("user_id = ?", id)
     end
@@ -60,6 +68,10 @@ class User < ApplicationRecord
 
     def feed_purchase
         Purchase.where("user_id = ?", id)
+    end
+
+    def feed_reputation
+        Reputation.where("reviewer_id = ?", id)
     end
 
 end

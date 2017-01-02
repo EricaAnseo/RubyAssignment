@@ -13,9 +13,28 @@
 	margin-top: 10px;
 }
 
-.product-delete
+.product-delete, 
+.product-update, 
+.wishlist-remove
 {
 	margin-top: 10px;
+}
+
+.btn-wishlist
+{
+	width: 100%;
+}
+
+.prod-desc
+{
+	margin-top:5px;
+	margin-bottom: 10px;
+}
+
+.purchase-amount,
+.purchase-price
+{
+	margin-top:10px;
 }
 
 input[type=submit]
@@ -25,7 +44,7 @@ input[type=submit]
 
 .like-buttons
 {
-	margin-top: 5px;
+	//margin-top: 5px;
 	font-size: 16px;
 
 	.fa-thumbs-up
@@ -38,4 +57,17 @@ input[type=submit]
 		margin-left: 10px;
 	}
 
+}
+
+.profile
+{
+	.list-user
+	{
+		list-style: none;
+	}
+
+	form
+	{
+		padding-top: 10px;
+	}
 }

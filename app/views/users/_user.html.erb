@@ -1,17 +1,49 @@
 <% if logged_in?  %>
 	<% if !current_user?(user) %>
-		<li class="list-user col-sm-4">
-			<div class="list-user-profile">
-				<%= link_to image_tag(user.avatar), user %>
-			</div>
-			<div class="list-user-name">
-				<%= link_to user.name, user %>
-			</div>
-			<div class="list-user-delete">
-				<% if current_user.admin? && !current_user?(user) %>
-					<%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary"  %>
-				<% end %>
-			</div>
-		</li>
+		<% if current_page?('/users') %> 
+			<li class="list-user col-sm-4 col-xs-6">
+				<div class="list-user-profile">
+					<%= link_to image_tag(user.avatar), user %>
+				</div>
+				<div class="list-user-name">
+					<%= link_to user.name, profile_path(user.id) %>
+				</div>
+				<div class="list-user-delete">
+					<% if current_user.admin? && !current_user?(user) %>
+						<%= link_to "Delete", user, method: :delete, data: { confirm: "Remove User?" }, class: "btn btn-primary"  %>
+					<% end %>
+				</div>
+			</li>
+		<% else %> 
+			<li class="list-user">
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="list-user-profile">
+							<%= image_tag(user.avatar) %>
+						</div>
+						<div class="list-user-name">
+							<h2><%= user.name %></h2>
+						</div>
+					</div>
+					<div class="col-xs-8">
+						<div class="form-reputiation">
+							<%= render 'users/form_reputation', user: user %>
+						</div>
+					</div>
+				</div>
+				<div class="row user-reputation">
+					<div class="col-sm-12">
+						<h3 class="center">Reviews</h3>
+						<% if @reputations %>
+							<% @reputations.each do |reputation| %>
+						    	<%= render reputation %>
+						  	<% end %>
+						<% else %>
+							No one has reviewed this person.
+						<% end %>
+					</div>
+				</div>
+			</li>
+		<% end %>
 	<% end %>
 <% end %>

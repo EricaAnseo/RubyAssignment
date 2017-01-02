@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	root 'products#shop'
-	get  '/help',    to: 'static_pages#help'
+	#get  '/help',    to: 'static_pages#help'
 	get  '/about',   to: 'static_pages#about'
 	get  '/contact', to: 'static_pages#contact'
 	get  '/toc', 	 to: 'static_pages#toc'
@@ -22,11 +22,8 @@ Rails.application.routes.draw do
 	resources :products, only: [:create, :destroy] 
 	resources :cart, only: [:show]
 
-    resources :users do  
-        member do
-            put '/profile', to: 'users#seller'
-        end
-    end  
+    get  '/users/profile/:id',  to: 'users#profile', as: 'profile'
+    post '/users/profile/:id', to: 'users#reputation', as: 'reputation'
 
     resources :products do  
         member do
