@@ -1,4 +1,4 @@
-require_relative "./review_validator"
+#require_relative "./review_validator"
 class Review < ApplicationRecord
 	belongs_to :user
 	belongs_to :product
@@ -6,6 +6,6 @@ class Review < ApplicationRecord
 	validates :product_id, presence: true
 	validates :comment, presence: true, length: { maximum: 200 }
 
-	include ActiveModel::Validations
-    validates_with reviewValidator
+	#include ActiveModel::Validations
+    #validates_with reviewValidator
 end
