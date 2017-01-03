@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170101120242) do
   end
 
   create_table "reputations", force: :cascade do |t|
+    t.integer  "user_id"
     t.integer  "reviewer_id"
     t.integer  "reviewee_id"
     t.integer  "rating"
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170101120242) do
     t.datetime "updated_at",  null: false
     t.index ["reviewee_id"], name: "index_reputations_on_reviewee_id"
     t.index ["reviewer_id"], name: "index_reputations_on_reviewer_id"
+    t.index ["user_id"], name: "index_reputations_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
