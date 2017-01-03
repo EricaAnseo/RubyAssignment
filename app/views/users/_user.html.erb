@@ -3,7 +3,7 @@
 		<% if current_page?('/users') %> 
 			<li class="list-user col-sm-4 col-xs-6">
 				<div class="list-user-profile">
-					<%= link_to image_tag(user.avatar), user %>
+					<%= link_to image_tag(user.avatar), profile_path(user.id) %>
 				</div>
 				<div class="list-user-name">
 					<%= link_to user.name, profile_path(user.id) %>

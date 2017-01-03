@@ -5,6 +5,14 @@
 .product_feed
 {
     -webkit-padding-start: 0px;
+
+    img 
+    {
+    	width: auto;
+	    height: 100%;
+        max-height: 125px;
+    	max-width: 125px;
+    }
 }
 
 .users

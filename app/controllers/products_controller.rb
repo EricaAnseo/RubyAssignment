@@ -42,9 +42,13 @@ class ProductsController < ApplicationController
 
 	# UPDATED IMPLEMENTATION
 	def destroy
-		@product.destroy
-		flash[:success] = "Product deleted"
-		redirect_to root_url
+		@product = Product.find(params[:id])
+	    if @product
+	      @product.destroy
+	      flash[:success] = "Product deleted"
+			redirect_to root_url
+	    end
+		
 	end
 
 	# NEW PRIVATE METHOD
