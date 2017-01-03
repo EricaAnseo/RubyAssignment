@@ -18,6 +18,7 @@
 	<%#= f.label 'Category' %>
 	<%#= f.collection_select(:id, Category.all, :id, :category_name, {}, {:class => 'form-control'})    %>
 
+	<%= f.label 'Product_Image' %>
 	<%= f.file_field :avatar, class: "form-control" %>
 
 	<%= f.submit yield(:button_text), class: "btn btn-primary" %>

@@ -17,7 +17,7 @@
 		<% else %> 
 			<li class="list-user">
 				<div class="row">
-					<div class="col-xs-4">
+					<div class="col-xs-12 col-sm-4">
 						<div class="list-user-profile">
 							<%= image_tag(user.avatar) %>
 						</div>
@@ -25,7 +25,7 @@
 							<h2><%= user.name %></h2>
 						</div>
 					</div>
-					<div class="col-xs-8">
+					<div class="col-xs-12 col-sm-8">
 						<div class="form-reputiation">
 							<%= render 'users/form_reputation', user: user %>
 						</div>
