@@ -72,6 +72,4 @@ Product.find(2).categories << food
 Product.find(3).categories << clothes
 Product.find(4).categories << clothes << accessories
 
-User.find(1).purchases << Product.find(2)
-User.find(1).wishlists << Product.find(3)
 
