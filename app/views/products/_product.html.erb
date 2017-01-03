@@ -26,13 +26,15 @@
 					</span>
 				</div>
 			<% end %>
-			<div class="col-xs-3">
+			<div class="col-xs-4">
+				<%= render 'products/like_buttons', product: product %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
 				<span class="timestamp">
 					<%= time_ago_in_words(product.created_at) %> ago <br>
 				</span>
-			</div>
-			<div class="col-xs-4">
-				<%= render 'products/like_buttons', product: product %>
 			</div>
 		</div>
 	<% end %>
